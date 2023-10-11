@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
+  .logo span {
+    color: #ff6f61;
+  }
+  
