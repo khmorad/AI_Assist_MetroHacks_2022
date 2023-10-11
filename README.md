@@ -1,8 +1,32 @@
-In order to run the program  the folowing command has to be ran by the tester
--
-`npm install`  and  `npm run start`   
--
-openAI API key is required to be implemented in order for this website to work                         
-1-openAI api key can be obtained by first creating an account in https://beta.openai.com/           
-2-when the openAI acount is created by clicking on the profile picture and clicking on the "View API keys" API key can be obtained    
-3-recieved openAI API key should be implemented under app.js line #18 and replace process.env.OPENAI_API_KEY with a key included between quotation marks (ex: "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")
+# AIAssist Web Application
+
+AIAssist is a web application developed during Metro Hacks 2022. It utilizes React and the OpenAI API to provide essay critique and revision suggestions. Additionally, it features an image-to-text function, making it valuable for critiquing handwritten essays.
+
+This is the Updated Version of the application where I focused on fixing the user interface and cost efficiency of the program
+
+## Team Members
+- Khashayar Moradpour
+- Dzhamal Chapanov
+- Subrat Tripathi
+- Ahad Hasan
+
+## Demo
+Check out the demo of the program [here](https://ai-assist-eight.vercel.app/).
+
+## Features
+
+### Essay Critique and Revision
+- Accepts essays as input and provides constructive critiques and revision suggestions.
+
+### Image-to-Text Conversion
+- Converts images containing handwritten essays into text for further analysis.
+
+## Getting Started
+
+### Prerequisites
+- Node.js installed on your system.
+
+### Installation
+1. Clone this repository.
+   ```bash
+   git clone https://github.com/your-username/ai-assist.git
