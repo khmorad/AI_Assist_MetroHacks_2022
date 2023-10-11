@@ -85,7 +85,7 @@ function App() {
   }
   
   return (
-    <div class="gradient">
+    <div class="">
     <div className="containerAll">
       
       <Navbar />
