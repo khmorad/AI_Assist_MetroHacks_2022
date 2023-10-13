@@ -4,7 +4,7 @@ AIAssist is a web application developed during Metro Hacks 2022. It utilizes Rea
 
 This is the Updated Version of the application where I focused on fixing the user interface and cost efficiency of the program
 
-THe original repo can be found [here](https://github.com/JamV8/essay_ai_v2).
+The original repo can be found [here](https://github.com/JamV8/essay_ai_v2).
 
 ## Team Members
 - Khashayar Moradpour
