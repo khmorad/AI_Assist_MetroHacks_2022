@@ -31,4 +31,4 @@ Check out the demo of the program [here](https://ai-assist-eight.vercel.app/).
 ### Installation
 1. Clone this repository.
    ```bash
-   git clone https://github.com/your-username/ai-assist.git
+   git clone https://github.com/your-username/AI_Assist_MetroHacks_2022
