@@ -35,7 +35,7 @@ function App() {
     setLoading(true);
   
     try {
-      const critiqueResponse = await axios.post('https://api.openai.com/v1/completions', {
+      const critiqueResponse = await openai.createCompletion({
         model: "text-davinci-002",
         prompt: `Critique the writing:\n${prompt}\nCritique:\n`,
         temperature: 0.7,
@@ -43,14 +43,9 @@ function App() {
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`
-        }
       });
   
-      const revisionResponse = await axios.post('https://api.openai.com/v1/completions', {
+      const revisionResponse = await openai.createCompletion({
         model: "text-davinci-002",
         prompt: `Rewrite the following with better prose:\n${prompt}\nRewritten version:\n`,
         temperature: 0.7,
@@ -58,11 +53,6 @@ function App() {
         top_p: 1,
         frequency_penalty: 0,
         presence_penalty: 0,
-      }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${API_KEY}`
-        }
       });
   
       const critiqueText = critiqueResponse.data.choices[0].text;
