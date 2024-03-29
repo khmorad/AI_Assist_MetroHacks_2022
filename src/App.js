@@ -5,6 +5,8 @@ import Navbar from './Navbar';
 import './scrollbar.css';
 import Critique from './Critique.js';
 import Revision from './Rivision';
+import axios from 'axios';
+
 import './backGround.css'
 function App() {
 
@@ -29,38 +31,53 @@ function App() {
 
 
   const getAiEssay = async (prompt) => {
-    setDisabled(true)
-    setLoading(true)
-
-    const response = await openai.createCompletion({
-      model: "text-davinci-002",
-      prompt: `Critique the writing:
-       \n ${prompt} \n Critique:\n`,
-      temperature: 0.7,
-      max_tokens: 1200,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    })
-    
-    const response2 = await openai.createCompletion({
-      model: "text-davinci-002",
-      prompt: `Rewrite the following with better prose:
-       \n ${prompt} \n Rewritten version:\n`,
-      temperature: 0.7,
-      max_tokens: 1200,
-      top_p: 1,
-      frequency_penalty: 0,
-      presence_penalty: 0,
-    })
-    const critiqueText = response.data.choices[0].text;
-    const revisionText = response2.data.choices[0].text;
-
-    setCritique(critiqueText);
-    setRevision(revisionText);
-    setDisabled(false)
-    setLoading(false)
+    setDisabled(true);
+    setLoading(true);
+  
+    try {
+      const critiqueResponse = await axios.post('https://api.openai.com/v1/completions', {
+        model: "text-davinci-002",
+        prompt: `Critique the writing:\n${prompt}\nCritique:\n`,
+        temperature: 0.7,
+        max_tokens: 1200,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${API_KEY}`
+        }
+      });
+  
+      const revisionResponse = await axios.post('https://api.openai.com/v1/completions', {
+        model: "text-davinci-002",
+        prompt: `Rewrite the following with better prose:\n${prompt}\nRewritten version:\n`,
+        temperature: 0.7,
+        max_tokens: 1200,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${API_KEY}`
+        }
+      });
+  
+      const critiqueText = critiqueResponse.data.choices[0].text;
+      const revisionText = revisionResponse.data.choices[0].text;
+  
+      setCritique(critiqueText);
+      setRevision(revisionText);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  
+    setDisabled(false);
+    setLoading(false);
   }
+  
 
   const getImageRecognition = async (image) => {
     setEssay('')
