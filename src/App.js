@@ -46,7 +46,7 @@ function App() {
       });
   
       const revisionResponse = await openai.createCompletion({
-        model: "text-davinci-002",
+        model: "davinci-002",
         prompt: `Rewrite the following with better prose:\n${prompt}\nRewritten version:\n`,
         temperature: 0.7,
         max_tokens: 1200,
